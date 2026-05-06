@@ -1,0 +1,42 @@
+# Feature: Sprawdź ceny konkurencji — Price Intelligence Modal
+
+OPPORTUNITY: "Gdyby pokazywało mi to od razu ceny podobnych butów bez szukania ręcznego. I gdyby faktycznie oszczędzało mi te kilka godzin tygodniowo." — nowi sellerzy (0–3 mies.) wyceniają produkty na ślepo, bo research cen rynkowych robią ręcznie albo pomijają go w ogóle.
+
+OUTCOME: ≥60% nowych sellerów testujących prototyp wpisuje cenę mieszczącą się w sugerowanym zakresie (mediana kategorii ±20%) — mierzony podczas wywiadu przez obserwację ekranu.
+
+## Co budujemy
+
+Ekran dodawania produktu w panelu sellera z przyciskiem "Sprawdź ceny konkurencji" przy polu ceny. Po kliknięciu otwiera się modal z miniaturami podobnych produktów, wykresem rozkładu cen, ceną średnią i trendem z ostatniego miesiąca. Wszystkie dane hardcodowane z CSV (kategorie: shoes, dresses). Seller widzi kontekst rynkowy zanim wpisze swoją cenę.
+
+## User flow
+
+1. Seller wybiera kategorię produktu (np. "Shoes / Sneakers")
+2. Przechodzi do pola "Cena" — obok pojawia się link/button "Sprawdź ceny konkurencji"
+3. Klika button — otwiera się modal bez przeładowania strony
+4. W modalu widzi: siatkę miniatur 6–8 podobnych produktów z cenami, wykres słupkowy rozkładu cen w kategorii, wyróżnioną cenę średnią (np. "Średnia: 249 zł") i badge trendu ("↑ +12% vs poprzedni miesiąc")
+5. Zamyka modal przyciskiem X lub kliknięciem tła — wraca do formularza z kursorem w polu ceny
+
+## Kryteria akceptacji
+
+- Button "Sprawdź ceny konkurencji" widoczny tylko gdy wybrana jest kategoria (nieaktywny / ukryty przed wyborem kategorii)
+- Modal otwiera się i zamyka bez utraty wpisanych danych w formularzu
+- Siatka pokazuje dokładnie 6 miniatur produktów z ceną w formacie `249 zł`
+- Wykres wyróżnia wizualnie zakres mediany ±20% (sugerowana strefa cenowa)
+- Cena średnia i trend widoczne bez scrollowania modalu na mobile (375px)
+- Cały UI po polsku
+
+## Czego NIE budujemy
+
+- Prawdziwe API ani połączenie z bazą danych — wszystkie dane mockowane z CSV
+- Autouzupełnianie pola ceny po zamknięciu modalu (seller decyduje sam)
+- Filtrowanie miniatur po kolorze, rozmiarze, marce
+- Historyczny wykres trendów dłuższy niż 1 miesiąc
+- Panel sellera z prawdziwą nawigacją — fake menu po lewej, tylko ten jeden ekran działa
+
+## Przykłady
+
+Input: Seller wybiera kategorię "Shoes", klika "Sprawdź ceny konkurencji"
+Oczekiwany rezultat: Modal pokazuje 6 miniatur sneakersów z cenami 219–549 zł, wykres z wyróżnioną strefą 320–480 zł (mediana ±20%), badge "Średnia: 399 zł" i "↑ +8% vs poprzedni miesiąc".
+
+Input: Seller nie wybrał jeszcze kategorii i patrzy na pole ceny
+Oczekiwany rezultat: Button "Sprawdź ceny konkurencji" jest niewidoczny lub wyszarzony z tooltipem "Najpierw wybierz kategorię" — modal się nie otwiera.
