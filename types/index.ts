@@ -21,6 +21,7 @@ export type MockProduct = {
   price: number
   category: Category
   bgColor: string
+  imageUrl?: string
 }
 
 export type PriceBucket = {

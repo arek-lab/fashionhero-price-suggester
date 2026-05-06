@@ -10,12 +10,12 @@ const shoesPriceRange: PriceRange = {
 }
 
 const shoesProducts: MockProduct[] = [
-  { id: 's1', name: 'Sneakersy skórzane', price: 219, category: 'shoes', bgColor: '#e8e4de' },
-  { id: 's2', name: 'Derby klasyczne', price: 289, category: 'shoes', bgColor: '#ddd8d0' },
-  { id: 's3', name: 'Botki Chelsea', price: 349, category: 'shoes', bgColor: '#d4cec8' },
-  { id: 's4', name: 'Sneakersy białe', price: 399, category: 'shoes', bgColor: '#f0ede8' },
-  { id: 's5', name: 'Kozaki wysokie', price: 449, category: 'shoes', bgColor: '#c8c2ba' },
-  { id: 's6', name: 'Sandały płaskie', price: 549, category: 'shoes', bgColor: '#e0d8ce' },
+  { id: 's1', name: 'Sneakersy skórzane', price: 219, category: 'shoes', bgColor: '#e8e4de', imageUrl: 'https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8c2hvZXN8ZW58MHx8MHx8fDA%3D' },
+  { id: 's2', name: 'Derby klasyczne', price: 289, category: 'shoes', bgColor: '#ddd8d0', imageUrl: 'https://images.unsplash.com/photo-1549298916-b41d501d3772?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHNob2VzfGVufDB8fDB8fHww' },
+  { id: 's3', name: 'Botki Chelsea', price: 349, category: 'shoes', bgColor: '#d4cec8', imageUrl: 'https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHNob2VzfGVufDB8fDB8fHww' },
+  { id: 's4', name: 'Sneakersy białe', price: 399, category: 'shoes', bgColor: '#f0ede8', imageUrl: 'https://images.unsplash.com/photo-1595341888016-a392ef81b7de?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fHNob2VzfGVufDB8fDB8fHww' },
+  { id: 's5', name: 'Kozaki wysokie', price: 449, category: 'shoes', bgColor: '#c8c2ba', imageUrl: 'https://images.unsplash.com/photo-1539185441755-769473a23570?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fHNob2VzfGVufDB8fDB8fHww' },
+  { id: 's6', name: 'Sandały płaskie', price: 549, category: 'shoes', bgColor: '#e0d8ce', imageUrl: 'https://images.unsplash.com/photo-1551107696-a4b0c5a0d9a2?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fHNob2VzfGVufDB8fDB8fHww' },
 ]
 
 // zone: 319–479 — mark buckets overlapping with zone

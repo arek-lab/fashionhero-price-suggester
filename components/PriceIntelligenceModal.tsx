@@ -29,38 +29,20 @@ export function PriceIntelligenceModal({ data, onClose }: Props) {
       onClick={(e) => { if (e.target === e.currentTarget) onClose() }}
     >
       <div className="relative bg-white w-full max-w-xl border border-[#e5e5e5]">
-        {/* Sticker */}
-        <div
-          className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none"
-        >
-          <div
-            className="relative bg-[#fffde7] border border-[#e5e5e5] px-7 py-5 max-w-xs text-center pointer-events-auto"
-            style={{ transform: 'rotate(-1.5deg)', boxShadow: '3px 4px 12px rgba(0,0,0,0.13), 0 1px 2px rgba(0,0,0,0.07)' }}
-          >
-            {/* Tape — top-left */}
-            <div className="absolute -top-3 -left-3" style={{ transform: 'rotate(-38deg)' }}>
-              <div style={{ width: 38, height: 14, background: 'rgba(210,230,255,0.55)', borderTop: '1px solid rgba(180,210,255,0.4)', borderBottom: '1px solid rgba(180,210,255,0.4)', backdropFilter: 'blur(1px)' }} />
-            </div>
-            {/* Tape — top-right */}
-            <div className="absolute -top-3 -right-3" style={{ transform: 'rotate(38deg)' }}>
-              <div style={{ width: 38, height: 14, background: 'rgba(210,230,255,0.55)', borderTop: '1px solid rgba(180,210,255,0.4)', borderBottom: '1px solid rgba(180,210,255,0.4)', backdropFilter: 'blur(1px)' }} />
-            </div>
-            {/* Tape — bottom-left */}
-            <div className="absolute -bottom-3 -left-3" style={{ transform: 'rotate(38deg)' }}>
-              <div style={{ width: 38, height: 14, background: 'rgba(210,230,255,0.55)', borderTop: '1px solid rgba(180,210,255,0.4)', borderBottom: '1px solid rgba(180,210,255,0.4)', backdropFilter: 'blur(1px)' }} />
-            </div>
-            {/* Tape — bottom-right */}
-            <div className="absolute -bottom-3 -right-3" style={{ transform: 'rotate(-38deg)' }}>
-              <div style={{ width: 38, height: 14, background: 'rgba(210,230,255,0.55)', borderTop: '1px solid rgba(180,210,255,0.4)', borderBottom: '1px solid rgba(180,210,255,0.4)', backdropFilter: 'blur(1px)' }} />
-            </div>
-
-            <p className="text-[9px] uppercase tracking-widest text-[#999] mb-2">Informacja</p>
-            <p className="text-sm font-bold uppercase tracking-widest mb-3 leading-snug">
-              Dziękujemy za zainteresowanie
+        {/* Coming soon overlay */}
+        <div className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none" style={{ background: 'rgba(255,255,255,0.5)' }}>
+          <div className="text-center px-10 py-8" style={{ backdropFilter: 'blur(16px)', background: 'rgba(255,255,255,0.8)' }}>
+            <div className="w-8 h-px bg-black mx-auto mb-8" />
+            <p className="text-[9px] uppercase tracking-[0.25em] text-[#999] mb-4">
+              Wkrótce dostępne
             </p>
-            <p className="text-xs text-[#444] leading-relaxed">
-              Rozwiązanie jest w fazie testów. Poinformujemy Cię, kiedy będzie mogło Cię wspierać.
+            <p className="text-lg font-bold uppercase tracking-widest mb-6 leading-tight">
+              Dziękujemy<br />za zainteresowanie
             </p>
+            <p className="text-[11px] text-[#666] leading-relaxed max-w-[220px] mx-auto">
+              Rozwiązanie jest w fazie testów. Damy znać, kiedy będzie gotowe.
+            </p>
+            <div className="w-8 h-px bg-black mx-auto mt-8" />
           </div>
         </div>
         {/* Header */}
@@ -122,11 +104,19 @@ export function PriceIntelligenceModal({ data, onClose }: Props) {
           <div className="grid grid-cols-3 gap-3">
             {data.products.slice(0, 6).map((product) => (
               <div key={product.id} className="border border-[#e5e5e5]">
-                {/* Image placeholder — takes 65% of card height */}
-                <div
-                  className="w-full"
-                  style={{ backgroundColor: product.bgColor, aspectRatio: '3/4', maxHeight: '120px' }}
-                />
+                {product.imageUrl ? (
+                  <img
+                    src={product.imageUrl}
+                    alt={product.name}
+                    className="w-full object-cover"
+                    style={{ aspectRatio: '3/4', maxHeight: '120px' }}
+                  />
+                ) : (
+                  <div
+                    className="w-full"
+                    style={{ backgroundColor: product.bgColor, aspectRatio: '3/4', maxHeight: '120px' }}
+                  />
+                )}
                 {/* Product info */}
                 <div className="px-2 py-1.5 bg-white">
                   <p className="text-[10px] text-[#666] leading-tight truncate">
