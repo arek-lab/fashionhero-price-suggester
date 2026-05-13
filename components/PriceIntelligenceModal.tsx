@@ -1,15 +1,18 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { PriceDistributionChart } from './PriceDistributionChart'
 import type { CategoryPriceData } from '@/types'
 
 type Props = {
   data: CategoryPriceData
   onClose: () => void
+  onSignUp?: () => void
 }
 
-export function PriceIntelligenceModal({ data, onClose }: Props) {
+export function PriceIntelligenceModal({ data, onClose, onSignUp }: Props) {
+  const [selectedPlan, setSelectedPlan] = useState<'Basic' | 'Pro' | 'Profit'>('Pro')
+
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose()
@@ -44,7 +47,11 @@ export function PriceIntelligenceModal({ data, onClose }: Props) {
             </p>
             <div className="grid grid-cols-3 gap-3 mb-5">
               {([['Basic', '29,99'], ['Pro', '49,99'], ['Profit', '99,99']] as const).map(([name, price]) => (
-                <div key={name} className={`border px-3 py-3 text-center ${name === 'Pro' ? 'border-black' : 'border-[#e5e5e5]'}`}>
+                <div
+                  key={name}
+                  onClick={() => setSelectedPlan(name)}
+                  className={`border px-3 py-3 text-center cursor-pointer ${selectedPlan === name ? 'border-black' : 'border-[#e5e5e5]'}`}
+                >
                   <p className="text-[9px] uppercase tracking-[0.2em] text-[#999] mb-1">{name}</p>
                   <p className="text-sm font-bold">{price} zł</p>
                 </div>
@@ -52,6 +59,7 @@ export function PriceIntelligenceModal({ data, onClose }: Props) {
             </div>
             <button
               type="button"
+              onClick={() => { onSignUp?.(); onClose() }}
               className="w-full border border-black bg-black text-white text-[10px] uppercase tracking-widest py-3 hover:bg-white hover:text-black transition-colors"
             >
               Zapisz się na wcześniejszy dostęp<br />w promocyjnej cenie
@@ -60,7 +68,7 @@ export function PriceIntelligenceModal({ data, onClose }: Props) {
           </div>
         </div>
         {/* Header */}
-        <div className="flex items-center justify-between px-5 py-4 border-b border-[#e5e5e5]">
+        <div className="relative z-20 flex items-center justify-between px-5 py-4 border-b border-[#e5e5e5]">
           <div>
             <p className="text-[10px] uppercase tracking-widest text-[#999] mb-0.5">
               Analiza rynku

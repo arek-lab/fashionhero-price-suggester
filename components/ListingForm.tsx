@@ -20,6 +20,7 @@ export function ListingForm() {
   const [price, setPrice] = useState('')
   const [description, setDescription] = useState('')
   const [modalOpen, setModalOpen] = useState(false)
+  const [signedUp, setSignedUp] = useState(false)
 
   const selectedRange = category ? priceRanges[category] : null
   const modalData = category && mockPriceData[category] ? mockPriceData[category] : null
@@ -87,6 +88,14 @@ export function ListingForm() {
               <p className="text-[11px] text-[#666] mt-0.5">
                 na podstawie {selectedRange.sampleSize} podobnych produktów
               </p>
+            </div>
+          )}
+
+          {signedUp && (
+            <div className="bg-[#f5f5f5] border border-[#e5e5e5] px-4 py-3 mb-4">
+              <p className="text-[10px] uppercase tracking-widest text-[#999] mb-1">Wcześniejszy dostęp</p>
+              <p className="text-sm font-bold">Dziękujemy za zapisanie się!</p>
+              <p className="text-[11px] text-[#666] mt-0.5">Powiadomimy Cię, gdy funkcja będzie dostępna.</p>
             </div>
           )}
 
@@ -189,6 +198,7 @@ export function ListingForm() {
         <PriceIntelligenceModal
           data={modalData}
           onClose={() => setModalOpen(false)}
+          onSignUp={() => setSignedUp(true)}
         />
       )}
     </>
