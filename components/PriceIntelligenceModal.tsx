@@ -29,19 +29,33 @@ export function PriceIntelligenceModal({ data, onClose }: Props) {
       onClick={(e) => { if (e.target === e.currentTarget) onClose() }}
     >
       <div className="relative bg-white w-full max-w-xl border border-[#e5e5e5]">
-        {/* Coming soon overlay */}
-        <div className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none" style={{ background: 'rgba(255,255,255,0.5)' }}>
-          <div className="text-center px-10 py-8" style={{ backdropFilter: 'blur(16px)', background: 'rgba(255,255,255,0.8)' }}>
+        {/* Coming soon overlay — CTA */}
+        <div className="absolute inset-0 z-10 flex items-center justify-center" style={{ background: 'rgba(255,255,255,0.5)' }}>
+          <div className="text-center px-8 py-8 w-full max-w-sm" style={{ backdropFilter: 'blur(16px)', background: 'rgba(255,255,255,0.92)' }}>
             <div className="w-8 h-px bg-black mx-auto mb-8" />
             <p className="text-[9px] uppercase tracking-[0.25em] text-[#999] mb-4">
               Wkrótce dostępne
             </p>
-            <p className="text-lg font-bold uppercase tracking-widest mb-6 leading-tight">
-              Dziękujemy<br />za zainteresowanie
+            <p className="text-base font-bold uppercase tracking-widest mb-2 leading-tight">
+              Dobrze dobrana cena<br />to więcej sprzedaży
             </p>
-            <p className="text-[11px] text-[#666] leading-relaxed max-w-[220px] mx-auto">
-              Rozwiązanie jest w fazie testów. Damy znać, kiedy będzie gotowe.
+            <p className="text-[11px] text-[#666] leading-relaxed mb-5">
+              Wyprzedź konkurencję — wyceń produkty trafnie od pierwszego dnia.
             </p>
+            <div className="grid grid-cols-3 gap-3 mb-5">
+              {([['Basic', '29,99'], ['Pro', '49,99'], ['Profit', '99,99']] as const).map(([name, price]) => (
+                <div key={name} className={`border px-3 py-3 text-center ${name === 'Pro' ? 'border-black' : 'border-[#e5e5e5]'}`}>
+                  <p className="text-[9px] uppercase tracking-[0.2em] text-[#999] mb-1">{name}</p>
+                  <p className="text-sm font-bold">{price} zł</p>
+                </div>
+              ))}
+            </div>
+            <button
+              type="button"
+              className="w-full border border-black bg-black text-white text-[10px] uppercase tracking-widest py-3 hover:bg-white hover:text-black transition-colors"
+            >
+              Zapisz się na wcześniejszy dostęp<br />w promocyjnej cenie
+            </button>
             <div className="w-8 h-px bg-black mx-auto mt-8" />
           </div>
         </div>
